@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     List<PhotoClass>list;
     RecyclerView recyclerView;
     PhotoAdapter adapter;
+    TextView size;
 
 
     @Override
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        size=findViewById(R.id.size);
         recyclerView=findViewById(R.id.recyclerView);
         list=new ArrayList<>();
         adapter=new PhotoAdapter(this,list);
@@ -60,16 +64,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void image() {
 
         String[] column={MediaStore.Images.Media.DATA,MediaStore.Images.Media._ID};
-        String orderBy= MediaStore.Images.Media.DATE_ADDED;
+        String orderBy= MediaStore.Images.Media.DATE_MODIFIED;
         Cursor cursor=getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,column,null,null,orderBy+" DESC");
 
         int totalImages=cursor.getCount();
+        size.setText("("+totalImages+")");
         String [] path=new String[totalImages] ;
         for (int i=0;i<totalImages;i++){
-            cursor.moveToPosition(i);
+            cursor.moveToNext();
             int index=cursor.getColumnIndex(MediaStore.Images.Media.DATA);
             path[i]=cursor.getString(index);
             PhotoClass photoClass=new PhotoClass(path[i]);

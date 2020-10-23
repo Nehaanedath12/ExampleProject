@@ -14,9 +14,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
             android:text="Gallery"/>
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="size"/>
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
