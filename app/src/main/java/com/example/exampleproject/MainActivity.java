@@ -14,6 +14,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     List<PhotoClass>list;
     RecyclerView recyclerView;
     PhotoAdapter adapter;
-    TextView size;
+    TextView size,background;
 
 
     @Override
@@ -36,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         size=findViewById(R.id.size);
+        background=findViewById(R.id.background);
         recyclerView=findViewById(R.id.recyclerView);
         list=new ArrayList<>();
         adapter=new PhotoAdapter(this,list);
-        GridLayoutManager manager=new GridLayoutManager(this,3,GridLayoutManager.VERTICAL,false);
+        GridLayoutManager manager=new GridLayoutManager(this,4,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(manager);
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
@@ -74,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         int totalImages=cursor.getCount();
         size.setText("("+totalImages+")");
         String [] path=new String[totalImages] ;
+        if(totalImages==0){
+            background.setVisibility(View.VISIBLE);
+        }
         for (int i=0;i<totalImages;i++){
             cursor.moveToNext();
             int index=cursor.getColumnIndex(MediaStore.Images.Media.DATA);

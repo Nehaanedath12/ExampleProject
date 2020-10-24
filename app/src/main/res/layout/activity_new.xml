@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".NewActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/design_default_color_primary">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:layout_width="match_parent"
