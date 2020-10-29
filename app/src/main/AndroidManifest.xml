@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".PickImageActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -25,7 +26,7 @@
 
         <activity android:name=".MapActivity" />
         <activity android:name=".NewActivity" />
-        <activity android:name=".PickImageActivity">
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
