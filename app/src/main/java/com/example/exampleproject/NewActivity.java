@@ -2,8 +2,10 @@ package com.example.exampleproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,10 +22,15 @@ public class NewActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         ImageView imageView=findViewById(R.id.single_image);
         TextView name=findViewById(R.id.name);
+
+
+
         File file= new File(getIntent().getStringExtra("position"));
         name.setText(file.getName());
         Glide.with(getApplicationContext()).load(file).into(imageView);
         PhotoViewAttacher photoViewAttacher=new PhotoViewAttacher(imageView);
         photoViewAttacher.canZoom();
+
+
     }
 }

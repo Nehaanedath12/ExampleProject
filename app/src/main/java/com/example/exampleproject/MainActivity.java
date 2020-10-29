@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.database.Cursor;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+        TextView mapText=findViewById(R.id.mapText);
+
 
         size=findViewById(R.id.size);
         background=findViewById(R.id.background);
@@ -43,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         adapter=new PhotoAdapter(this,list);
         GridLayoutManager manager=new GridLayoutManager(this,4,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(manager);
+
+
+
+
+        mapText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MapActivity.class));
+            }
+        });
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
 
