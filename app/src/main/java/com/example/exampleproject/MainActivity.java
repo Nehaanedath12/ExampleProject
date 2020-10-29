@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        TextView mapText=findViewById(R.id.mapText);
 
 
         size=findViewById(R.id.size);
@@ -49,13 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        mapText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MapActivity.class));
-            }
-        });
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
 

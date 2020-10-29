@@ -28,14 +28,6 @@
             android:textStyle="bold"
             android:gravity="center"
             android:text="size"/>
-        <TextView
-            android:id="@+id/mapText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_marginLeft="200dp"
-            android:text="go to Map"/>
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

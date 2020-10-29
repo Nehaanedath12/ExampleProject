@@ -67,20 +67,20 @@ public class MapActivity extends AppCompatActivity {
             LoadMap();
 
         }
-        zoomIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation animation= AnimationUtils.loadAnimation(MapActivity.this,R.anim.zoom_in);
-                animLinear.startAnimation(animation);
-            }
-        });
-        zoomOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation animation= AnimationUtils.loadAnimation(MapActivity.this,R.anim.zoom_out);
-                animLinear.startAnimation(animation);
-            }
-        });
+//        zoomIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Animation animation= AnimationUtils.loadAnimation(MapActivity.this,R.anim.zoom_in);
+//                animLinear.startAnimation(animation);
+//            }
+//        });
+//        zoomOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Animation animation= AnimationUtils.loadAnimation(MapActivity.this,R.anim.zoom_out);
+//                animLinear.startAnimation(animation);
+//            }
+//        });
 
 
     }
