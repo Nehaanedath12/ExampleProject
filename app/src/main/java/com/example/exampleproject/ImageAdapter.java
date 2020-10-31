@@ -34,6 +34,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ImageClass imageClass=list.get(position);
         Glide.with(context).load(imageClass.uri).into(holder.imageView);
+        holder.image_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list.remove(imageClass);
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -43,10 +50,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        ImageView imageView,image_delete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.image);
+//            imageView=itemView.findViewById(R.id.image_delete);
+
         }
     }
 }
