@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
-        <activity android:name=".PickImageActivity"></activity>
+        <activity android:name=".CaptureImage.CapturingImageActivity"></activity>
+        <activity android:name=".PickImageActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data

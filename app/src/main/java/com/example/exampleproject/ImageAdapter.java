@@ -34,13 +34,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ImageClass imageClass=list.get(position);
         Glide.with(context).load(imageClass.uri).into(holder.imageView);
-        holder.image_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                list.remove(imageClass);
-                notifyDataSetChanged();
-            }
-        });
+//        holder.image_delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                list.remove(imageClass);
+//                notifyDataSetChanged();
+//            }
+//        });
 
     }
 

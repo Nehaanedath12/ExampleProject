@@ -49,7 +49,6 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        getSupportActionBar().hide();
         search=findViewById(R.id.search);
         go=findViewById(R.id.goButton);
         zoomIn=findViewById(R.id.zoomIn);
