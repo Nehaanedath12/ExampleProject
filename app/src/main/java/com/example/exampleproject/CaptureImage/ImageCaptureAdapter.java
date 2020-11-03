@@ -33,6 +33,13 @@ public class ImageCaptureAdapter  extends RecyclerView.Adapter<ImageCaptureAdapt
         ImageCaptureClass captureClass=list.get(position);
         holder.imageRV.setImageBitmap(captureClass.bitmap.bitmap);
         holder.imageRV.setRotation(-captureClass.bitmap.rotationDegrees);
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.remove(list.get(position));
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -42,10 +49,11 @@ public class ImageCaptureAdapter  extends RecyclerView.Adapter<ImageCaptureAdapt
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageRV;
+        ImageView imageRV,delete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageRV=itemView.findViewById(R.id.image_RV);
+            delete=itemView.findViewById(R.id.delete);
         }
     }
 }
