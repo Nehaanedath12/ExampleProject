@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA"/>
 
@@ -19,15 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
         <activity android:name=".CaptureImage.CapturingImageActivity"></activity>
-        <activity android:name=".PickImageActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ImageOneByOne.PickImageActivity" />
+        <activity android:name=".LoadallImage.MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA_yKuCEcYFrXir2HoCxI108PNE4_uSeE8" />
 
-        <activity android:name=".MapActivity" />
-        <activity android:name=".NewActivity" />
+        <activity android:name=".Map.MapActivity" />
+        <activity android:name=".LoadallImage.NewActivity" />
         <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

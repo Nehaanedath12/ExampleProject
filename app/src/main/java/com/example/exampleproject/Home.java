@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.exampleproject.CaptureImage.CapturingImageActivity;
+import com.example.exampleproject.ImageOneByOne.PickImageActivity;
+import com.example.exampleproject.LoadallImage.MainActivity;
+import com.example.exampleproject.Map.MapActivity;
 
 public class Home extends AppCompatActivity {
     Button all,one,mapText,captureImage;
@@ -31,20 +33,20 @@ public class Home extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),PickImageActivity.class));
+                startActivity(new Intent(getApplicationContext(), PickImageActivity.class));
             }
         });
 
         mapText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MapActivity.class));
+                startActivity(new Intent(getApplicationContext(), MapActivity.class));
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.exampleproject;
+package com.example.exampleproject.LoadallImage;
 
 public class PhotoClass {
 

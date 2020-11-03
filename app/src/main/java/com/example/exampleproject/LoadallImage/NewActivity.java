@@ -1,4 +1,4 @@
-package com.example.exampleproject;
+package com.example.exampleproject.LoadallImage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.exampleproject.R;
+
 import java.io.File;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -19,7 +21,6 @@ public class NewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-        getSupportActionBar().hide();
         ImageView imageView=findViewById(R.id.single_image);
         TextView name=findViewById(R.id.name);
 

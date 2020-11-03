@@ -1,4 +1,4 @@
-package com.example.exampleproject;
+package com.example.exampleproject.LoadallImage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.database.Cursor;
@@ -18,6 +17,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.exampleproject.R;
 
 import java.util.ArrayList;
 import java.util.List;

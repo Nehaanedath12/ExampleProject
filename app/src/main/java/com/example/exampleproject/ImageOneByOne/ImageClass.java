@@ -1,4 +1,4 @@
-package com.example.exampleproject;
+package com.example.exampleproject.ImageOneByOne;
 
 import android.net.Uri;
 

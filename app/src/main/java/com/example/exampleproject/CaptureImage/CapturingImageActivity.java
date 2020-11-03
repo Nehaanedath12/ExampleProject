@@ -1,7 +1,6 @@
 package com.example.exampleproject.CaptureImage;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,24 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.exampleproject.R;
 
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 import io.fotoapparat.Fotoapparat;
-import io.fotoapparat.hardware.orientation.Orientation;
 import io.fotoapparat.result.BitmapPhoto;
 import io.fotoapparat.result.PhotoResult;
 import io.fotoapparat.result.WhenDoneListener;
@@ -65,7 +59,7 @@ public class CapturingImageActivity extends AppCompatActivity {
 
     private void addCaptureImage() {
         View view = LayoutInflater.from(this).inflate(R.layout.camera_layout, null,false);
-        ImageView cancelImage,cancelDialogue,captureImage;
+        ImageView cancelImage,captureImage;
         CameraView cameraView = view.findViewById(R.id.camera_view);
         cancelImage=view.findViewById(R.id.cancel_image);
         captureImage=view.findViewById(R.id.capture_image);
