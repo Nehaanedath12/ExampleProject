@@ -17,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
-        <activity android:name=".Network.NetworkActivity"></activity>
         <activity android:name=".CaptureImage.CapturingImageActivity" />
         <activity android:name=".ImageOneByOne.PickImageActivity" />
         <activity android:name=".LoadallImage.MainActivity" />

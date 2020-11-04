@@ -52,10 +52,7 @@ public class Tools {
     public static boolean isConnected(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        if (info != null && info.isConnectedOrConnecting()) {
-            return true;
-        } else
-            return false;
+        return info != null && info.isConnectedOrConnecting();
     }
 
     public int GetPixels(int dp, Context context) {
