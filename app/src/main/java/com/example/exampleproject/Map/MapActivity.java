@@ -1,9 +1,5 @@
 package com.example.exampleproject.Map;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -16,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.exampleproject.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -38,8 +38,8 @@ public class MapActivity extends AppCompatActivity {
     FusedLocationProviderClient client;
     EditText search;
     TextView go;
-    List<Address>list;
-    ImageView zoomIn,zoomOut;
+    List<Address> list;
+    ImageView zoomIn, zoomOut;
     GoogleMap gMap;
     LinearLayout animLinear;
 
@@ -47,20 +47,19 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        search=findViewById(R.id.search);
-        go=findViewById(R.id.goButton);
-        zoomIn=findViewById(R.id.zoomIn);
-        zoomOut=findViewById(R.id.zoomOut);
-        animLinear=findViewById(R.id.linearAnim);
+        search = findViewById(R.id.search);
+        go = findViewById(R.id.goButton);
+        zoomIn = findViewById(R.id.zoomIn);
+        zoomOut = findViewById(R.id.zoomOut);
+        animLinear = findViewById(R.id.linearAnim);
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         client = LocationServices.getFusedLocationProviderClient(this);
-        list=new ArrayList<>();
+        list = new ArrayList<>();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
-        }
-        else {
+        } else {
             LoadMap();
 
         }
@@ -86,14 +85,16 @@ public class MapActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode== 101){
-            if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+        if (requestCode == 101) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 LoadMap();
+            } else {
+                Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show();
             }
-            else {Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show();}
         }
     }
+
     private void LoadMap() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -108,7 +109,7 @@ public class MapActivity extends AppCompatActivity {
                         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                             @Override
                             public void onMapReady(GoogleMap googleMap) {
-                                gMap=googleMap;
+                                gMap = googleMap;
                                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                                 MarkerOptions options = new MarkerOptions().position(latLng);
                                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
@@ -124,31 +125,28 @@ public class MapActivity extends AppCompatActivity {
             go.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   String location= search.getText().toString();
-                   if(!location.equals("")){
-                       Geocoder geocoder=new Geocoder(MapActivity.this);
-                       try {
-                           list=geocoder.getFromLocationName(location,1);
-                       } catch (IOException e) {
-                           e.printStackTrace();
-                       }
-                       if(list.size()>0){
-                       Address address = list.get(0);
-                       LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                       gMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                       gMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                       }
-                       else {
-                           Toast.makeText(MapActivity.this, "No place found!! Try Again ", Toast.LENGTH_SHORT).show();
-                       }
-                   }
+                    String location = search.getText().toString();
+                    if (!location.equals("")) {
+                        Geocoder geocoder = new Geocoder(MapActivity.this);
+                        try {
+                            list = geocoder.getFromLocationName(location, 1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if (list.size() > 0) {
+                            Address address = list.get(0);
+                            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                            gMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                            gMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                        } else {
+                            Toast.makeText(MapActivity.this, "No place found!! Try Again ", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             });
 
 
-
         }
-
 
 
     }

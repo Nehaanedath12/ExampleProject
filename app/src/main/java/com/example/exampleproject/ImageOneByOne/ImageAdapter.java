@@ -19,21 +19,21 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     Context context;
 
     public ImageAdapter(Context context, List<ImageClass> list) {
-        this.list=list;
-        this.context=context;
+        this.list = list;
+        this.context = context;
 
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.adapter_image,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_image, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final ImageClass imageClass=list.get(position);
+        final ImageClass imageClass = list.get(position);
         Glide.with(context).load(imageClass.uri).into(holder.imageView);
 //        holder.image_delete.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -51,10 +51,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView,image_delete;
+        ImageView imageView, image_delete;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.image);
+            imageView = itemView.findViewById(R.id.image);
 //            imageView=itemView.findViewById(R.id.image_delete);
 
         }

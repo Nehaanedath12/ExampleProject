@@ -5,20 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoadallImage.NewActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/design_default_color_primary">
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
+        android:id="@+id/single_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/single_image"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -5,15 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ImageOneByOne.PickImageActivity">
+
     <Button
         android:id="@+id/loadImage"
-        android:text="Load"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Load" />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_Image"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_Image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
