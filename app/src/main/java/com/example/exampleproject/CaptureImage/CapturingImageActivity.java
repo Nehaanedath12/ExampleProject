@@ -2,16 +2,20 @@ package com.example.exampleproject.CaptureImage;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +30,7 @@ import io.fotoapparat.result.BitmapPhoto;
 import io.fotoapparat.result.PhotoResult;
 import io.fotoapparat.result.WhenDoneListener;
 import io.fotoapparat.view.CameraView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class CapturingImageActivity extends AppCompatActivity {
     RecyclerView captureRV;
@@ -33,6 +38,7 @@ public class CapturingImageActivity extends AppCompatActivity {
     ImageView addImage, saveImage;
     List<ImageCaptureClass> list;
     DatabaseHelper helper;
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class CapturingImageActivity extends AppCompatActivity {
         captureRV = findViewById(R.id.captureImageRecycle);
         addImage = findViewById(R.id.add_image);
         saveImage = findViewById(R.id.save_image);
+        frameLayout=findViewById(R.id.fragment);
         list = new ArrayList<>();
         helper = new DatabaseHelper(this);
         captureAdapter = new ImageCaptureAdapter(this, list);
@@ -101,12 +108,36 @@ public class CapturingImageActivity extends AppCompatActivity {
                             list.add(captureClass);
 //                            helper.insertImage(captureClass);
                             fotoapparat.stop();
+
+                            captureAdapter.setOnclickListener(new ImageCaptureAdapter.OnClickListener() {
+
+                                @Override
+                                public void onItemClick(BitmapPhoto bitmapPhoto1) {
+                                    //using fragment
+//                                    Fragment fragment=new ImageFragment(bitmapPhoto1);
+//                                    FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.fragment,fragment).commit();
+                                    View  view=LayoutInflater.from(CapturingImageActivity.this).inflate(R.layout.image_touch,null,false);
+                                    ImageView imageView=view.findViewById(R.id.image);
+                                    AlertDialog.Builder builder1=new AlertDialog.Builder(CapturingImageActivity.this, android.R.style.Theme_Light_NoTitleBar_Fullscreen).setView(view);
+                                    AlertDialog dialog=builder1.create();
+                                    dialog.show();
+                                    imageView.setImageBitmap(bitmapPhoto1.bitmap);
+                                    imageView.setRotation(-bitmapPhoto1.rotationDegrees);
+                                    PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(imageView);
+                                    photoViewAttacher.canZoom();
+
+                                }
+                            });
+
                         }
                         captureRV.setAdapter(captureAdapter);
                         captureAdapter.notifyDataSetChanged();
                         dialogue.dismiss();
+
                     }
                 });
+
             }
         });
     }

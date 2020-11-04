@@ -1,10 +1,12 @@
 package com.example.exampleproject.CaptureImage;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,14 +15,24 @@ import com.example.exampleproject.R;
 
 import java.util.List;
 
+import io.fotoapparat.result.BitmapPhoto;
+
+
 public class ImageCaptureAdapter extends RecyclerView.Adapter<ImageCaptureAdapter.ViewHolder> {
     Context context;
     List<ImageCaptureClass> list;
+    public OnClickListener onClickListener;
 
     public ImageCaptureAdapter(CapturingImageActivity context, List<ImageCaptureClass> list) {
         this.context = context;
         this.list = list;
     }
+
+    public void setOnclickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+
+    }
+
 
     @NonNull
     @Override
@@ -41,12 +53,22 @@ public class ImageCaptureAdapter extends RecyclerView.Adapter<ImageCaptureAdapte
                 notifyDataSetChanged();
             }
         });
+       holder.imageRV.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               onClickListener.onItemClick(captureClass.getBitmap());
+           }
+       });
 
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+    public interface OnClickListener {
+
+        void onItemClick(BitmapPhoto bitmap);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
