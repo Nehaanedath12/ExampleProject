@@ -5,7 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CaptureImage.CapturingImageActivity">
-
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/design_default_color_primary">
+    <ImageView
+        android:id="@+id/save_image"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_baseline_save_24"/>
+</androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,15 +33,11 @@
             android:src="@drawable/ic_baseline_add_circle_outline_24"
             />
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/captureImageRecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    </HorizontalScrollView>
     </LinearLayout>
 
 

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Load one by one"/>
+        android:text="load_one_by_one"/>
     <Button
         android:id="@+id/mapText"
         android:layout_width="wrap_content"
@@ -35,5 +35,12 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Capture Image"/>
+    <Button
+        android:id="@+id/network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Network connection"/>
 
 </LinearLayout>

@@ -1,5 +1,8 @@
 package com.example.exampleproject.CaptureImage;
 
+
+import android.graphics.Bitmap;
+
 import io.fotoapparat.result.BitmapPhoto;
 
 public class ImageCaptureClass {
@@ -8,4 +11,7 @@ public class ImageCaptureClass {
         this.bitmap=bitmap;
     }
 
+    public BitmapPhoto getBitmap() {
+        return bitmap;
+    }
 }

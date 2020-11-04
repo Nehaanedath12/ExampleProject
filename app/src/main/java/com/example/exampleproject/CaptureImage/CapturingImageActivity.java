@@ -9,13 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.exampleproject.DatabaseHelper;
 import com.example.exampleproject.R;
+import com.example.exampleproject.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +34,9 @@ import io.fotoapparat.view.CameraView;
 public class CapturingImageActivity extends AppCompatActivity {
     RecyclerView captureRV;
     ImageCaptureAdapter captureAdapter;
-    ImageView addImage;
+    ImageView addImage,saveImage;
     List<ImageCaptureClass>list;
+    DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +44,14 @@ public class CapturingImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_capturing_imge);
         captureRV=findViewById(R.id.captureImageRecycle);
         addImage =findViewById(R.id.add_image);
+        saveImage=findViewById(R.id.save_image);
         list=new ArrayList<>();
+        helper=new DatabaseHelper(this);
         captureAdapter=new ImageCaptureAdapter(this,list);
         captureRV.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
 
+
+//        loadImage();
 
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,11 +61,17 @@ public class CapturingImageActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(CapturingImageActivity.this,new String[]{Manifest.permission.CAMERA},100);
                 }else {
                     addCaptureImage();
+                    if(list.size()>0){
+                        Log.d("sizeList",String.valueOf(list.size()));
+                    }
                 }
             }
         });
 
+
     }
+
+
 
     private void addCaptureImage() {
         View view = LayoutInflater.from(this).inflate(R.layout.camera_layout, null,false);
@@ -68,6 +84,9 @@ public class CapturingImageActivity extends AppCompatActivity {
         AlertDialog dialogue = builder.create();
         dialogue.show();
         fotoapparat.start();
+
+
+
 
         cancelImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +106,31 @@ public class CapturingImageActivity extends AppCompatActivity {
                             Log.d("captured Image",bitmapPhoto.bitmap.toString());
                             ImageCaptureClass captureClass=new ImageCaptureClass(bitmapPhoto);
                             list.add(captureClass);
-
+//                            helper.insertImage(captureClass);
+                            fotoapparat.stop();
                         }
                         captureRV.setAdapter(captureAdapter);
+                        captureAdapter.notifyDataSetChanged();
                         dialogue.dismiss();
                     }
-
                 });
             }
         });
-
     }
+
+//    private void loadImage() {
+//        Cursor cursor=helper.getImages();
+//        if(cursor!=null && cursor.getCount()>0){
+//
+//            for(int i=0;i<cursor.getCount();i++){
+//                list.add(new ImageCaptureClass(Tools.StringToBitMap((cursor.getString(cursor.getColumnIndex("image")))))) ;
+//            }
+//            captureRV.setAdapter(captureAdapter);
+//            captureAdapter.notifyDataSetChanged();
+//
+//
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -108,5 +141,4 @@ public class CapturingImageActivity extends AppCompatActivity {
             }
         }
     }
-
 }

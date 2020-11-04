@@ -24,8 +24,6 @@ public class NewActivity extends AppCompatActivity {
         ImageView imageView=findViewById(R.id.single_image);
         TextView name=findViewById(R.id.name);
 
-
-
         File file= new File(getIntent().getStringExtra("position"));
         name.setText(file.getName());
         Glide.with(getApplicationContext()).load(file).into(imageView);
