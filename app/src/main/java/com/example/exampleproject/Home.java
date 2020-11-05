@@ -14,6 +14,9 @@ import com.example.exampleproject.ImageOneByOne.PickImageActivity;
 import com.example.exampleproject.LoadallImage.MainActivity;
 import com.example.exampleproject.Map.MapActivity;
 import com.google.android.material.snackbar.Snackbar;
+import com.shasin.notificationbanner.Banner;
+
+import es.dmoral.toasty.Toasty;
 
 public class Home extends AppCompatActivity {
     Button all, one, mapText, captureImage, network;
@@ -32,8 +35,10 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Tools.isConnected(getApplicationContext())) {
-                    Toast.makeText(Home.this, "You have internet", Toast.LENGTH_SHORT).show();
+                    Toasty.success(Home.this, "You have internet", Toast.LENGTH_SHORT).show();
                 } else {
+                    Toasty.error(Home.this,"no Internet!!",Toast.LENGTH_LONG).show();
+                    Banner.make(v,Home.this,Banner.INFO,"not success",Banner.TOP).show();
                     Snackbar snackbar = Snackbar.make(v, "Please connect to network!! ", Snackbar.LENGTH_LONG);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.setBackgroundTint(Color.RED);
@@ -41,6 +46,7 @@ public class Home extends AppCompatActivity {
                 }
             }
         });
+
         captureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
