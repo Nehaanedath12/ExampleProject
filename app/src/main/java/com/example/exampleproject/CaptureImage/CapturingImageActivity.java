@@ -2,20 +2,18 @@ package com.example.exampleproject.CaptureImage;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,10 +33,11 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class CapturingImageActivity extends AppCompatActivity {
     RecyclerView captureRV;
     ImageCaptureAdapter captureAdapter;
-    ImageView addImage, saveImage;
+    ImageView addImage, saveImage,forward,backward;
     List<ImageCaptureClass> list;
     DatabaseHelper helper;
     FrameLayout frameLayout;
+    int currentPosition=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,16 +108,20 @@ public class CapturingImageActivity extends AppCompatActivity {
 //                            helper.insertImage(captureClass);
                             fotoapparat.stop();
 
+
                             captureAdapter.setOnclickListener(new ImageCaptureAdapter.OnClickListener() {
 
                                 @Override
-                                public void onItemClick(BitmapPhoto bitmapPhoto1) {
+                                public void onItemClick(BitmapPhoto bitmapPhoto1, int position) {
+                                    currentPosition=position;
                                     //using fragment
 //                                    Fragment fragment=new ImageFragment(bitmapPhoto1);
 //                                    FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
 //                                    transaction.replace(R.id.fragment,fragment).commit();
                                     View  view=LayoutInflater.from(CapturingImageActivity.this).inflate(R.layout.image_touch,null,false);
                                     ImageView imageView=view.findViewById(R.id.image);
+                                    forward=view.findViewById(R.id.forward);
+                                    backward=view.findViewById(R.id.backward);
                                     AlertDialog.Builder builder1=new AlertDialog.Builder(CapturingImageActivity.this, android.R.style.Theme_Light_NoTitleBar_Fullscreen).setView(view);
                                     AlertDialog dialog=builder1.create();
                                     dialog.show();
@@ -126,6 +129,34 @@ public class CapturingImageActivity extends AppCompatActivity {
                                     imageView.setRotation(-bitmapPhoto1.rotationDegrees);
                                     PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(imageView);
                                     photoViewAttacher.canZoom();
+
+                                    forward.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            if(list.size()>0) {
+                                                if (currentPosition < list.size()) {
+                                                    imageView.setImageBitmap(list.get(currentPosition).getBitmap().bitmap);
+                                                    PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(imageView);
+                                                    photoViewAttacher.canZoom();
+                                                    currentPosition++;
+                                                }
+                                            }
+                                        }
+                                    });
+
+                                    backward.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            if(list.size()>0){
+                                                if(currentPosition>0){
+                                                    currentPosition--;
+                                                    imageView.setImageBitmap(list.get(currentPosition).getBitmap().bitmap);
+                                                    PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(imageView);
+                                                    photoViewAttacher.canZoom();
+                                                }
+                                            }
+                                        }
+                                    });
 
                                 }
                             });

@@ -1,12 +1,10 @@
 package com.example.exampleproject.CaptureImage;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,7 +54,7 @@ public class ImageCaptureAdapter extends RecyclerView.Adapter<ImageCaptureAdapte
        holder.imageRV.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               onClickListener.onItemClick(captureClass.getBitmap());
+               onClickListener.onItemClick(captureClass.getBitmap(),position);
            }
        });
 
@@ -68,7 +66,7 @@ public class ImageCaptureAdapter extends RecyclerView.Adapter<ImageCaptureAdapte
     }
     public interface OnClickListener {
 
-        void onItemClick(BitmapPhoto bitmap);
+        void onItemClick(BitmapPhoto bitmap, int position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
