@@ -21,6 +21,8 @@ import com.example.exampleproject.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class MainActivity extends AppCompatActivity {
 
     final int request_code = 121;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 image();
             } else {
-                Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show();
+                Toasty.warning(this,"Allow Permission",Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void image() {
 
+        Toasty.success(this,"Permission Allowed",Toast.LENGTH_SHORT).show();
         String[] column = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
         String orderBy = MediaStore.Images.Media.DATE_MODIFIED;
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, column, null, null, orderBy + " DESC");

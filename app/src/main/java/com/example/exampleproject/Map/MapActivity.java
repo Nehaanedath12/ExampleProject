@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class MapActivity extends AppCompatActivity {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
@@ -49,8 +51,8 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         search = findViewById(R.id.search);
         go = findViewById(R.id.goButton);
-        zoomIn = findViewById(R.id.zoomIn);
-        zoomOut = findViewById(R.id.zoomOut);
+//        zoomIn = findViewById(R.id.zoomIn);
+//        zoomOut = findViewById(R.id.zoomOut);
         animLinear = findViewById(R.id.linearAnim);
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -90,7 +92,7 @@ public class MapActivity extends AppCompatActivity {
 
                 LoadMap();
             } else {
-                Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show();
+                Toasty.warning(this, "allow permission", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -139,7 +141,7 @@ public class MapActivity extends AppCompatActivity {
                             gMap.addMarker(new MarkerOptions().position(latLng).title(location));
                             gMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                         } else {
-                            Toast.makeText(MapActivity.this, "No place found!! Try Again ", Toast.LENGTH_SHORT).show();
+                            Toasty.error(MapActivity.this, "No place found!! Try Again ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

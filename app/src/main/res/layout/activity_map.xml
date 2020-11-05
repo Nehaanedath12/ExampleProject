@@ -26,19 +26,19 @@
             android:text="Go"
             android:textColor="@color/white" />
 
-        <ImageView
-            android:id="@+id/zoomIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:src="@drawable/ic_baseline_add_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/zoomIn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:src="@drawable/ic_baseline_add_24" />-->
 
-        <ImageView
-            android:id="@+id/zoomOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_baseline_horizontal_rule_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/zoomOut"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:src="@drawable/ic_baseline_horizontal_rule_24" />-->
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
