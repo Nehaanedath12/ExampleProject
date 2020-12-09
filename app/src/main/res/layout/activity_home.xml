@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:text="Load all images" />
 
     <Button
@@ -45,5 +45,57 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Network connection" />
+    <Button
+        android:id="@+id/graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Graph" />
+    <Button
+        android:id="@+id/pie_graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Pie Graph" />
+    <Button
+        android:id="@+id/radar_graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Radar Graph" />
+    <Button
+    android:id="@+id/line_graph_Home"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:text="Line Graph" />
+    <Button
+        android:id="@+id/bubble_graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Bubble Graph" />
+    <Button
+        android:id="@+id/candle_graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="CandleStick Graph" />
+
+    <Button
+        android:id="@+id/scattered_graph_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Scattered Graph" />
+
+
 
 </LinearLayout>

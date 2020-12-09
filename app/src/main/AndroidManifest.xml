@@ -17,6 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
+        <activity android:name=".GraphicalRep.ScatteredChartActivity"></activity>
+        <activity android:name=".GraphicalRep.CandleStickChartActivity" />
+        <activity android:name=".GraphicalRep.BubbleChartActivity" />
+        <activity android:name=".GraphicalRep.LineChartActivity" />
+        <activity android:name=".GraphicalRep.RadarChartActivity" />
+        <activity android:name=".GraphicalRep.PieChartActivity" />
+        <activity android:name=".GraphicalRep.GraphicalActivity" />
         <activity android:name=".CaptureImage.CapturingImageActivity" />
         <activity android:name=".ImageOneByOne.PickImageActivity" />
         <activity android:name=".LoadallImage.MainActivity" />

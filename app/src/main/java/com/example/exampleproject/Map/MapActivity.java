@@ -1,11 +1,15 @@
 package com.example.exampleproject.Map;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,6 +59,7 @@ public class MapActivity extends AppCompatActivity {
 //        zoomOut = findViewById(R.id.zoomOut);
         animLinear = findViewById(R.id.linearAnim);
 
+
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         client = LocationServices.getFusedLocationProviderClient(this);
         list = new ArrayList<>();
@@ -62,6 +67,7 @@ public class MapActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
         } else {
+
             LoadMap();
 
         }
