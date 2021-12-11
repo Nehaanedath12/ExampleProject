@@ -2,6 +2,7 @@ package com.example.exampleproject.Map;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -48,6 +49,7 @@ public class MapActivity extends AppCompatActivity {
     ImageView zoomIn, zoomOut;
     GoogleMap gMap;
     LinearLayout animLinear;
+    public static final String RESULT = "Result";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +126,9 @@ public class MapActivity extends AppCompatActivity {
                                 //to set type of google map
 //                                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                                 googleMap.addMarker(options);
+
+                                Intent intent = new Intent();
+                                intent.putExtra(RESULT, location.getLatitude()+ location.getLongitude());
                             }
                         });
                     }

@@ -38,7 +38,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         Glide.with(context).load(new File(photoClass.path)).into(holder.image);
         holder.image.setOnClickListener(view -> {
             Intent intent = new Intent(context, NewActivity.class);
-            intent.putExtra("position", photoClass.path);
+            intent.putExtra("positionn", photoClass.path);
             context.startActivity(intent);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 

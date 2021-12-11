@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.exampleproject">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +24,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
-        <activity android:name=".GraphicalRep.ScatteredChartActivity"></activity>
+        <activity android:name=".BluetoothPrinter.PrintBluetoothActivity"></activity>
+        <activity android:name=".Sign.SignMainActivity" />
+        <activity android:name=".Sign.SignActivity" />
+        <activity android:name=".Payment.PaymentActivity" />
+        <activity android:name=".GraphicalRep.ScatteredChartActivity" />
         <activity android:name=".GraphicalRep.CandleStickChartActivity" />
         <activity android:name=".GraphicalRep.BubbleChartActivity" />
         <activity android:name=".GraphicalRep.LineChartActivity" />
@@ -28,6 +39,16 @@
         <activity android:name=".ImageOneByOne.PickImageActivity" />
         <activity android:name=".LoadallImage.MainActivity" />
 
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA_yKuCEcYFrXir2HoCxI108PNE4_uSeE8" />
